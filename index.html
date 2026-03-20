@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dilshad Restaurant | Birmingham</title>
+  <meta name="description" content="Modern v1 website concept for Dilshad Restaurant with direct ordering integration." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="brand">DILSHAD</div>
+      <nav>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a class="btn btn-primary" id="orderTopBtn" href="#">Order Online</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Birmingham · Selly Oak</p>
+        <h1>Heart’s Happiness, Modern Indian Dining</h1>
+        <p class="lead">A cleaner, faster v1 web experience focused on conversions — order, reserve, and discover signature dishes.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" id="orderHeroBtn" href="#">Start Order</a>
+          <a class="btn" id="bookBtn" href="https://dilshadrestau.com/book-a-table" target="_blank" rel="noopener">Book a Table</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Quick Info</h3>
+        <ul>
+          <li><strong>Address:</strong> 618-620 Bristol Road, Selly Oak, Birmingham B29 6BQ</li>
+          <li><strong>Phone:</strong> +44 121 472 5016</li>
+          <li><strong>Hours:</strong> Mon-Thu 4pm-12am · Fri-Sat 4pm-2am · Sun 4pm-12am</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="menu">
+    <div class="container">
+      <h2>Popular Picks</h2>
+      <div class="menu-grid">
+        <article class="dish"><h4>Chicken Tikka Masala</h4><p>Creamy tomato masala, charcoal-finished tikka.</p></article>
+        <article class="dish"><h4>Lamb Rogan Josh</h4><p>Rich Kashmiri-style curry with slow-cooked lamb.</p></article>
+        <article class="dish"><h4>Garlic Chilli King Prawn</h4><p>Bold heat, garlic butter, finished with fresh herbs.</p></article>
+        <article class="dish"><h4>Giant Naan</h4><p>Fresh tandoor naan, ideal for sharing.</p></article>
+      </div>
+      <p class="muted">Menu data can be wired to your ordering API/provider in v2.</p>
+    </div>
+  </section>
+
+  <section class="section alt" id="about">
+    <div class="container">
+      <h2>About Dilshad</h2>
+      <p>The name Dilshad translates to “heart’s happiness.” This concept keeps that warmth while modernising UX and making online ordering the primary conversion action.</p>
+      <div class="pills">
+        <span>Award-winning cuisine</span>
+        <span>Fast online ordering</span>
+        <span>Loyalty ready</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="visit">
+    <div class="container split">
+      <div>
+        <h2>Visit or Order</h2>
+        <p>Choose dine-in or delivery/collection in seconds.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" id="orderBottomBtn" href="#">Order Now</a>
+          <a class="btn" href="https://dilshadrestau.com/contactus" target="_blank" rel="noopener">Contact</a>
+        </div>
+      </div>
+      <iframe class="map" loading="lazy" src="https://maps.google.com/maps?q=618-620%20Bristol%20Road%20Selly%20Oak%20Birmingham&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Dilshad Restaurant · v1 concept</p>
+      <a id="orderFooterBtn" href="#">Order Online</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
