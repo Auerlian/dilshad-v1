@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dilshad Restaurant | Birmingham</title>
-  <meta name="description" content="Modern v1 website concept for Dilshad Restaurant with direct ordering integration." />
+  <meta name="description" content="Modern v1 website concept for Dilshad Restaurant with native menu, basket, and checkout flow." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,10 +16,11 @@
       <div class="brand">DILSHAD</div>
       <nav>
         <a href="#menu">Menu</a>
+        <a href="#checkout">Checkout</a>
         <a href="#about">About</a>
         <a href="#visit">Visit</a>
       </nav>
-      <a class="btn btn-primary" id="orderTopBtn" href="#">Order Online</a>
+      <a class="btn btn-primary" href="#menu">Order Online</a>
     </div>
   </header>
 
@@ -27,11 +28,11 @@
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">Birmingham · Selly Oak</p>
-        <h1>Heart’s Happiness, Modern Indian Dining</h1>
-        <p class="lead">A cleaner, faster v1 web experience focused on conversions — order, reserve, and discover signature dishes.</p>
+        <h1>Heart’s Happiness, Now with Native Online Ordering</h1>
+        <p class="lead">Full in-site ordering flow: browse dishes, build basket, and place your order without leaving the website.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" id="orderHeroBtn" href="#">Start Order</a>
-          <a class="btn" id="bookBtn" href="https://dilshadrestau.com/book-a-table" target="_blank" rel="noopener">Book a Table</a>
+          <a class="btn btn-primary" href="#menu">Start Order</a>
+          <a class="btn" href="#checkout">Go to Checkout</a>
         </div>
       </div>
       <div class="card">
@@ -40,6 +41,7 @@
           <li><strong>Address:</strong> 618-620 Bristol Road, Selly Oak, Birmingham B29 6BQ</li>
           <li><strong>Phone:</strong> +44 121 472 5016</li>
           <li><strong>Hours:</strong> Mon-Thu 4pm-12am · Fri-Sat 4pm-2am · Sun 4pm-12am</li>
+          <li><strong>Order Type:</strong> Collection / Delivery</li>
         </ul>
       </div>
     </div>
@@ -47,25 +49,69 @@
 
   <section class="section" id="menu">
     <div class="container">
-      <h2>Popular Picks</h2>
-      <div class="menu-grid">
-        <article class="dish"><h4>Chicken Tikka Masala</h4><p>Creamy tomato masala, charcoal-finished tikka.</p></article>
-        <article class="dish"><h4>Lamb Rogan Josh</h4><p>Rich Kashmiri-style curry with slow-cooked lamb.</p></article>
-        <article class="dish"><h4>Garlic Chilli King Prawn</h4><p>Bold heat, garlic butter, finished with fresh herbs.</p></article>
-        <article class="dish"><h4>Giant Naan</h4><p>Fresh tandoor naan, ideal for sharing.</p></article>
-      </div>
-      <p class="muted">Menu data can be wired to your ordering API/provider in v2.</p>
+      <h2>Order Menu</h2>
+      <p class="muted">Pick your dishes below. Basket updates instantly.</p>
+
+      <div class="menu-grid" id="menuGrid"></div>
     </div>
   </section>
 
-  <section class="section alt" id="about">
+  <section class="section alt" id="checkout">
+    <div class="container checkout-grid">
+      <div class="card">
+        <h3>Your Basket</h3>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="totals">
+          <div><span>Subtotal</span><strong id="subtotal">£0.00</strong></div>
+          <div><span>Delivery</span><strong id="delivery">£0.00</strong></div>
+          <div class="grand"><span>Total</span><strong id="total">£0.00</strong></div>
+        </div>
+      </div>
+
+      <form id="checkoutForm" class="card checkout-form">
+        <h3>Checkout Details</h3>
+
+        <label>Full Name
+          <input required name="name" type="text" placeholder="Your name" />
+        </label>
+
+        <label>Phone
+          <input required name="phone" type="tel" placeholder="07..." />
+        </label>
+
+        <label>Order Type
+          <select name="orderType" id="orderType">
+            <option value="collection">Collection</option>
+            <option value="delivery">Delivery (+£2.50)</option>
+          </select>
+        </label>
+
+        <label id="addressWrap">Address (delivery only)
+          <textarea name="address" id="address" rows="3" placeholder="House number, street, postcode"></textarea>
+        </label>
+
+        <label>Preferred Time
+          <input name="time" type="text" placeholder="ASAP or e.g. 19:30" />
+        </label>
+
+        <label>Notes
+          <textarea name="notes" rows="3" placeholder="Allergies, spice level, requests"></textarea>
+        </label>
+
+        <button class="btn btn-primary" type="submit">Place Order</button>
+        <p class="muted small">MVP flow: this sends a structured order draft to WhatsApp for confirmation.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="about">
     <div class="container">
       <h2>About Dilshad</h2>
-      <p>The name Dilshad translates to “heart’s happiness.” This concept keeps that warmth while modernising UX and making online ordering the primary conversion action.</p>
+      <p>The name Dilshad translates to “heart’s happiness.” This experience modernises ordering UX to improve conversion and repeat purchases.</p>
       <div class="pills">
         <span>Award-winning cuisine</span>
-        <span>Fast online ordering</span>
-        <span>Loyalty ready</span>
+        <span>Native online checkout</span>
+        <span>Retention-ready UX</span>
       </div>
     </div>
   </section>
@@ -74,9 +120,9 @@
     <div class="container split">
       <div>
         <h2>Visit or Order</h2>
-        <p>Choose dine-in or delivery/collection in seconds.</p>
+        <p>Choose dine-in or order online in seconds.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" id="orderBottomBtn" href="#">Order Now</a>
+          <a class="btn btn-primary" href="#menu">Order Now</a>
           <a class="btn" href="https://dilshadrestau.com/contactus" target="_blank" rel="noopener">Contact</a>
         </div>
       </div>
@@ -86,8 +132,8 @@
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <p>© <span id="year"></span> Dilshad Restaurant · v1 concept</p>
-      <a id="orderFooterBtn" href="#">Order Online</a>
+      <p>© <span id="year"></span> Dilshad Restaurant · v2 ordering concept</p>
+      <a href="#checkout">Checkout</a>
     </div>
   </footer>
 
