@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Online | Dilshad Restaurant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Minimal Header -->
+  <header class="header-minimal">
+    <div class="container-fluid">
+      <a href="index.html" class="logo">DILSHAD</a>
+      <nav class="nav-minimal">
+        <a href="index.html">Home</a>
+        <a href="menu.html" class="active">Order</a>
+        <a href="reservations.html">Book Table</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon">☀️</span>
+        </button>
+        <a href="account.html" class="account-link">Account</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Location Banner -->
+  <div class="location-banner" id="locationBanner">
+    <div class="container-fluid">
+      <span class="location-text">📍 Delivering to: <strong>Selly Oak, B29</strong></span>
+      <button class="btn-change-location" id="changeLocation">Change</button>
+    </div>
+  </div>
+
+  <!-- Category Navigation (Sticky) -->
+  <nav class="category-nav" id="categoryNav">
+    <div class="container-fluid">
+      <div class="category-scroll">
+        <button class="category-tab active" data-category="specials">House Specials</button>
+        <button class="category-tab" data-category="starters">Classic Starters</button>
+        <button class="category-tab" data-category="tandoori">Tandoori</button>
+        <button class="category-tab" data-category="biryani">Biryani</button>
+        <button class="category-tab" data-category="naan">Naan</button>
+        <button class="category-tab" data-category="rice">Rice</button>
+        <button class="category-tab" data-category="sides">Sides</button>
+        <button class="category-tab" data-category="drinks">Drinks</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Menu Content -->
+  <main class="menu-main">
+    <div class="container-fluid">
+      
+      <!-- House Specials -->
+      <section class="menu-category" id="specials" data-category="specials">
+        <h2 class="category-title">House Specials</h2>
+        <div class="menu-grid-kasa" id="specialsGrid"></div>
+      </section>
+
+      <!-- Classic Starters -->
+      <section class="menu-category" id="starters" data-category="starters">
+        <h2 class="category-title">Classic Starters</h2>
+        <div class="menu-grid-kasa" id="startersGrid"></div>
+      </section>
+
+      <!-- Tandoori -->
+      <section class="menu-category" id="tandoori" data-category="tandoori">
+        <h2 class="category-title">Tandoori Starters</h2>
+        <div class="menu-grid-kasa" id="tandooriGrid"></div>
+      </section>
+
+      <!-- Biryani -->
+      <section class="menu-category" id="biryani" data-category="biryani">
+        <h2 class="category-title">Biryani Dishes</h2>
+        <div class="menu-grid-kasa" id="biryaniGrid"></div>
+      </section>
+
+      <!-- Naan -->
+      <section class="menu-category" id="naan" data-category="naan">
+        <h2 class="category-title">Naan & Bread</h2>
+        <div class="menu-grid-kasa" id="naanGrid"></div>
+      </section>
+
+      <!-- Rice -->
+      <section class="menu-category" id="rice" data-category="rice">
+        <h2 class="category-title">Rice</h2>
+        <div class="menu-grid-kasa" id="riceGrid"></div>
+      </section>
+
+      <!-- Sides -->
+      <section class="menu-category" id="sides" data-category="sides">
+        <h2 class="category-title">Vegetable Side Dishes</h2>
+        <div class="menu-grid-kasa" id="sidesGrid"></div>
+      </section>
+
+      <!-- Drinks -->
+      <section class="menu-category" id="drinks" data-category="drinks">
+        <h2 class="category-title">Drinks</h2>
+        <div class="menu-grid-kasa" id="drinksGrid"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Floating Cart Button -->
+  <button class="floating-cart" id="floatingCart" style="display: none;">
+    <div class="cart-icon-wrapper">
+      <span class="cart-icon">🛒</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </div>
+    <div class="cart-info">
+      <span class="cart-label">View Cart</span>
+      <span class="cart-total" id="cartTotal">£0.00</span>
+    </div>
+  </button>
+
+  <!-- Cart Sidebar -->
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Order</h3>
+      <button class="cart-close" id="cartClose">×</button>
+    </div>
+    
+    <div class="cart-body">
+      <div class="cart-items" id="cartItems">
+        <!-- Cart items will be inserted here -->
+      </div>
+    </div>
+    
+    <div class="cart-footer">
+      <div class="cart-totals">
+        <div class="total-row">
+          <span>Subtotal</span>
+          <span id="subtotalAmount">£0.00</span>
+        </div>
+        <div class="total-row">
+          <span>Delivery</span>
+          <span id="deliveryAmount">£2.50</span>
+        </div>
+        <div class="total-row grand">
+          <span>Total</span>
+          <span id="grandTotal">£0.00</span>
+        </div>
+      </div>
+      <button class="btn-checkout" id="checkoutBtn">Proceed to Checkout</button>
+      <p class="cart-note">Minimum order: £15.00</p>
+    </div>
+  </aside>
+
+  <!-- Cart Overlay -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <!-- Location Modal -->
+  <div class="location-modal" id="locationModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">×</button>
+      <h2>Delivery Location</h2>
+      <p>Enter your postcode to check if we deliver to your area</p>
+      <div class="location-form">
+        <input type="text" id="postcodeInput" placeholder="Enter postcode (e.g., B29 6BQ)" />
+        <button class="btn-primary" id="confirmLocation">Confirm Location</button>
+      </div>
+      <div class="location-divider">
+        <span>OR</span>
+      </div>
+      <button class="btn-secondary" id="collectionBtn">Collection Instead</button>
+      <p class="location-note">📍 618-620 Bristol Road, Selly Oak, Birmingham B29 6BQ</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

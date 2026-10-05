@@ -3,140 +3,200 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dilshad Restaurant | Birmingham</title>
-  <meta name="description" content="Modern v1 website concept for Dilshad Restaurant with native menu, basket, and checkout flow." />
+  <title>Dilshad Restaurant | Award-Winning Indian Cuisine in Birmingham</title>
+  <meta name="description" content="Experience authentic Indian cuisine at Dilshad Restaurant in Selly Oak, Birmingham. Order online or book a table." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <div class="brand">DILSHAD</div>
-      <nav>
-        <a href="#menu">Menu</a>
-        <a href="#checkout">Checkout</a>
-        <a href="#about">About</a>
-        <a href="#visit">Visit</a>
+  <!-- Minimal Header -->
+  <header class="header-minimal">
+    <div class="container-fluid">
+      <a href="index.html" class="logo">DILSHAD</a>
+      <nav class="nav-minimal">
+        <a href="index.html" class="active">Home</a>
+        <a href="menu.html">Order</a>
+        <a href="reservations.html">Book Table</a>
+        <a href="contact.html">Contact</a>
       </nav>
-      <a class="btn btn-primary" href="#menu">Order Online</a>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon">☀️</span>
+        </button>
+        <a href="menu.html" class="btn-primary-small">Order Now</a>
+      </div>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <p class="eyebrow">Birmingham · Selly Oak</p>
-        <h1>Heart’s Happiness, Now with Native Online Ordering</h1>
-        <p class="lead">Full in-site ordering flow: browse dishes, build basket, and place your order without leaving the website.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#menu">Start Order</a>
-          <a class="btn" href="#checkout">Go to Checkout</a>
+  <!-- Hero Section -->
+  <section class="hero-home">
+    <div class="container-fluid">
+      <div class="hero-content-home">
+        <div class="hero-text-home">
+          <span class="eyebrow-home">Birmingham · Selly Oak · Since 1985</span>
+          <h1 class="hero-title">Authentic Indian Cuisine</h1>
+          <p class="hero-subtitle">Experience the finest flavors of India, crafted with passion and tradition. Award-winning dishes delivered to your door or served in our welcoming restaurant.</p>
+          <div class="hero-cta">
+            <a href="menu.html" class="btn-primary-large">Order Online</a>
+            <a href="reservations.html" class="btn-secondary-large">Book a Table</a>
+          </div>
+        </div>
+        <div class="hero-image-home">
+          <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1200&q=85" alt="Delicious Indian Cuisine" />
         </div>
       </div>
-      <div class="card">
-        <h3>Quick Info</h3>
-        <ul>
-          <li><strong>Address:</strong> 618-620 Bristol Road, Selly Oak, Birmingham B29 6BQ</li>
-          <li><strong>Phone:</strong> +44 121 472 5016</li>
-          <li><strong>Hours:</strong> Mon-Thu 4pm-12am · Fri-Sat 4pm-2am · Sun 4pm-12am</li>
-          <li><strong>Order Type:</strong> Collection / Delivery</li>
-        </ul>
-      </div>
     </div>
   </section>
 
-  <section class="section" id="menu">
-    <div class="container">
-      <h2>Order Menu</h2>
-      <p class="muted">Pick your dishes below. Basket updates instantly.</p>
-
-      <div class="menu-grid" id="menuGrid"></div>
-    </div>
-  </section>
-
-  <section class="section alt" id="checkout">
-    <div class="container checkout-grid">
-      <div class="card">
-        <h3>Your Basket</h3>
-        <div id="cartItems" class="cart-items"></div>
-        <div class="totals">
-          <div><span>Subtotal</span><strong id="subtotal">£0.00</strong></div>
-          <div><span>Delivery</span><strong id="delivery">£0.00</strong></div>
-          <div class="grand"><span>Total</span><strong id="total">£0.00</strong></div>
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container-fluid">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🍽️</div>
+          <h3>Award-Winning</h3>
+          <p>Recognized for excellence in authentic Indian cuisine since 1985</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👨‍🍳</div>
+          <h3>Expert Chefs</h3>
+          <p>Traditional recipes prepared with the finest ingredients</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚚</div>
+          <h3>Fast Delivery</h3>
+          <p>Hot, fresh food delivered to your door within 45 minutes</p>
         </div>
       </div>
-
-      <form id="checkoutForm" class="card checkout-form">
-        <h3>Checkout Details</h3>
-
-        <label>Full Name
-          <input required name="name" type="text" placeholder="Your name" />
-        </label>
-
-        <label>Phone
-          <input required name="phone" type="tel" placeholder="07..." />
-        </label>
-
-        <label>Order Type
-          <select name="orderType" id="orderType">
-            <option value="collection">Collection</option>
-            <option value="delivery">Delivery (+£2.50)</option>
-          </select>
-        </label>
-
-        <label id="addressWrap">Address (delivery only)
-          <textarea name="address" id="address" rows="3" placeholder="House number, street, postcode"></textarea>
-        </label>
-
-        <label>Preferred Time
-          <input name="time" type="text" placeholder="ASAP or e.g. 19:30" />
-        </label>
-
-        <label>Notes
-          <textarea name="notes" rows="3" placeholder="Allergies, spice level, requests"></textarea>
-        </label>
-
-        <button class="btn btn-primary" type="submit">Place Order</button>
-        <p class="muted small">MVP flow: this sends a structured order draft to WhatsApp for confirmation.</p>
-      </form>
     </div>
   </section>
 
-  <section class="section" id="about">
-    <div class="container">
-      <h2>About Dilshad</h2>
-      <p>The name Dilshad translates to “heart’s happiness.” This experience modernises ordering UX to improve conversion and repeat purchases.</p>
-      <div class="pills">
-        <span>Award-winning cuisine</span>
-        <span>Native online checkout</span>
-        <span>Retention-ready UX</span>
+  <!-- Popular Dishes -->
+  <section class="popular-section">
+    <div class="container-fluid">
+      <div class="section-header">
+        <h2>Popular Dishes</h2>
+        <p>Our customers' favorites</p>
       </div>
-    </div>
-  </section>
-
-  <section class="section" id="visit">
-    <div class="container split">
-      <div>
-        <h2>Visit or Order</h2>
-        <p>Choose dine-in or order online in seconds.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#menu">Order Now</a>
-          <a class="btn" href="https://dilshadrestau.com/contactus" target="_blank" rel="noopener">Contact</a>
+      <div class="popular-grid">
+        <div class="popular-card">
+          <div class="popular-image">
+            <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800&q=80" alt="Chicken Tikka Masala" />
+          </div>
+          <div class="popular-content">
+            <h3>Chicken Tikka Masala</h3>
+            <p>Tender chicken in creamy tomato sauce</p>
+            <div class="popular-footer">
+              <span class="popular-price">£12.95</span>
+              <a href="menu.html" class="btn-order">Order Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="popular-card">
+          <div class="popular-image">
+            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&q=80" alt="Biryani" />
+          </div>
+          <div class="popular-content">
+            <h3>Lamb Biryani</h3>
+            <p>Aromatic rice with tender lamb</p>
+            <div class="popular-footer">
+              <span class="popular-price">£14.95</span>
+              <a href="menu.html" class="btn-order">Order Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="popular-card">
+          <div class="popular-image">
+            <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=800&q=80" alt="Tandoori" />
+          </div>
+          <div class="popular-content">
+            <h3>Mixed Grill</h3>
+            <p>Assortment of tandoori specialties</p>
+            <div class="popular-footer">
+              <span class="popular-price">£16.95</span>
+              <a href="menu.html" class="btn-order">Order Now</a>
+            </div>
+          </div>
         </div>
       </div>
-      <iframe class="map" loading="lazy" src="https://maps.google.com/maps?q=618-620%20Bristol%20Road%20Selly%20Oak%20Birmingham&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+      <div class="section-cta">
+        <a href="menu.html" class="btn-secondary-large">View Full Menu</a>
+      </div>
     </div>
   </section>
 
-  <footer class="site-footer">
-    <div class="container footer-wrap">
-      <p>© <span id="year"></span> Dilshad Restaurant · v2 ordering concept</p>
-      <a href="#checkout">Checkout</a>
+  <!-- Location Section -->
+  <section class="location-section">
+    <div class="container-fluid">
+      <div class="location-content">
+        <div class="location-info">
+          <h2>Visit Us</h2>
+          <div class="info-item">
+            <strong>Address</strong>
+            <p>618-620 Bristol Road<br>Selly Oak, Birmingham<br>B29 6BQ</p>
+          </div>
+          <div class="info-item">
+            <strong>Phone</strong>
+            <p><a href="tel:+441214725016">0121 472 5016</a></p>
+          </div>
+          <div class="info-item">
+            <strong>Hours</strong>
+            <p>Mon-Thu: 4pm-12am<br>Fri-Sat: 4pm-2am<br>Sun: 4pm-12am</p>
+          </div>
+          <div class="location-cta">
+            <a href="reservations.html" class="btn-primary-large">Book a Table</a>
+          </div>
+        </div>
+        <div class="location-map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2432.8!2d-1.9447!3d52.4389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc8a0!2s618-620%20Bristol%20Rd%2C%20Birmingham%20B29%206BQ!5e0!3m2!1sen!2suk!4v1234567890" 
+            width="100%" 
+            height="100%" 
+            style="border:0; border-radius: var(--radius-xl);" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Dilshad Restaurant Location">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-minimal">
+    <div class="container-fluid">
+      <div class="footer-content">
+        <p>&copy; 2026 Dilshad Restaurant. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="menu.html">Order</a>
+          <a href="reservations.html">Book</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      const isLight = document.body.classList.contains('light-theme');
+      themeToggle.querySelector('.theme-icon').textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('dilshad-theme', isLight ? 'light' : 'dark');
+    });
+
+    // Load theme preference (default to dark)
+    const savedTheme = localStorage.getItem('dilshad-theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+      themeToggle.querySelector('.theme-icon').textContent = '🌙';
+    } else {
+      themeToggle.querySelector('.theme-icon').textContent = '☀️';
+    }
+  </script>
 </body>
 </html>

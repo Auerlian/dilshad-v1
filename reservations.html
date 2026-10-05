@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserve a Table | Dilshad Restaurant</title>
+  <meta name="description" content="Book a table at Dilshad Restaurant. Perfect for special occasions and family dinners." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Minimal Header -->
+  <header class="header-minimal">
+    <div class="container-fluid">
+      <a href="index.html" class="logo">DILSHAD</a>
+      <nav class="nav-minimal">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Order</a>
+        <a href="reservations.html" class="active">Book Table</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon">☀️</span>
+        </button>
+        <a href="menu.html" class="btn-primary-small">Order Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container-fluid">
+      <h1>Reserve a Table</h1>
+      <p>Experience authentic Indian cuisine in our welcoming restaurant</p>
+    </div>
+  </section>
+
+  <!-- Reservation Form -->
+  <section class="form-section">
+    <div class="container-fluid">
+      <div class="form-layout">
+        <form class="reservation-form" id="reservationForm">
+          <h2>Booking Details</h2>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input required type="text" id="name" name="name" placeholder="Enter your name" />
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input required type="tel" id="phone" name="phone" placeholder="07..." />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input required type="email" id="email" name="email" placeholder="your@email.com" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Date *</label>
+              <input required type="date" id="date" name="date" />
+            </div>
+            
+            <div class="form-group">
+              <label for="time">Time *</label>
+              <select required id="time" name="time">
+                <option value="">Select time</option>
+                <option value="16:00">4:00 PM</option>
+                <option value="17:00">5:00 PM</option>
+                <option value="18:00">6:00 PM</option>
+                <option value="19:00">7:00 PM</option>
+                <option value="20:00">8:00 PM</option>
+                <option value="21:00">9:00 PM</option>
+                <option value="22:00">10:00 PM</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="guests">Number of Guests *</label>
+            <select required id="guests" name="guests">
+              <option value="">Select party size</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5 Guests</option>
+              <option value="6">6 Guests</option>
+              <option value="8">8 Guests</option>
+              <option value="10+">10+ Guests</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="occasion">Special Occasion (Optional)</label>
+            <select id="occasion" name="occasion">
+              <option value="">None</option>
+              <option value="birthday">Birthday</option>
+              <option value="anniversary">Anniversary</option>
+              <option value="celebration">Celebration</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="requests">Special Requests</label>
+            <textarea id="requests" name="requests" rows="4" placeholder="Dietary requirements, seating preferences, etc."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary-large" style="width: 100%;">Confirm Reservation</button>
+          <p class="form-note">You'll receive a confirmation via email and SMS</p>
+        </form>
+
+        <div class="form-sidebar">
+          <div class="info-card">
+            <h3>Restaurant Info</h3>
+            <div class="info-item">
+              <strong>Location</strong>
+              <p>618-620 Bristol Road<br>Selly Oak, Birmingham<br>B29 6BQ</p>
+            </div>
+            <div class="info-item">
+              <strong>Phone</strong>
+              <p><a href="tel:01214725016">0121 472 5016</a></p>
+            </div>
+            <div class="info-item">
+              <strong>Hours</strong>
+              <p>Mon-Thu: 4pm-12am<br>Fri-Sat: 4pm-2am<br>Sun: 4pm-12am</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-minimal">
+    <div class="container-fluid">
+      <div class="footer-content">
+        <p>&copy; 2026 Dilshad Restaurant. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="menu.html">Order</a>
+          <a href="reservations.html">Book</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      const isLight = document.body.classList.contains('light-theme');
+      themeToggle.querySelector('.theme-icon').textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('dilshad-theme', isLight ? 'light' : 'dark');
+    });
+
+    // Load theme preference (default to dark)
+    const savedTheme = localStorage.getItem('dilshad-theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+      themeToggle.querySelector('.theme-icon').textContent = '🌙';
+    } else {
+      themeToggle.querySelector('.theme-icon').textContent = '☀️';
+    }
+
+    // Form submission
+    document.getElementById('reservationForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      
+      // Create WhatsApp message
+      const message = `New Reservation Request:\n\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nDate: ${data.date}\nTime: ${data.time}\nGuests: ${data.guests}\nOccasion: ${data.occasion || 'None'}\nRequests: ${data.requests || 'None'}`;
+      
+      const whatsappUrl = `https://wa.me/441214725016?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+      
+      alert('Redirecting to WhatsApp to confirm your reservation...');
+    });
+  </script>
+</body>
+</html>

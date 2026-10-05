@@ -1,0 +1,234 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-03-21T12:53:00Z",
+  "source": [
+    "docs/cycle-2/cms-role-matrix.md",
+    "docs/cycle-2/backend-stack-and-api.md",
+    "docs/cycle-2/lead-feedback.md"
+  ],
+  "permissions": [
+    "dashboard.read",
+    "dashboard.configure",
+    "orders.read",
+    "orders.update_status",
+    "orders.cancel",
+    "orders.export",
+    "catalog.read",
+    "catalog.write",
+    "catalog.publish",
+    "catalog.availability.write",
+    "content.read",
+    "content.write",
+    "content.publish",
+    "media.read",
+    "media.write",
+    "locations.read",
+    "locations.write",
+    "users.read",
+    "users.write",
+    "roles.assign",
+    "settings.read",
+    "settings.write",
+    "audit.read",
+    "webhooks.read",
+    "webhooks.manage"
+  ],
+  "roles": {
+    "owner": {
+      "label": "Owner",
+      "permissions": [
+        "dashboard.read",
+        "dashboard.configure",
+        "orders.read",
+        "orders.update_status",
+        "orders.cancel",
+        "orders.export",
+        "catalog.read",
+        "catalog.write",
+        "catalog.publish",
+        "catalog.availability.write",
+        "content.read",
+        "content.write",
+        "content.publish",
+        "media.read",
+        "media.write",
+        "locations.read",
+        "locations.write",
+        "users.read",
+        "users.write",
+        "roles.assign",
+        "settings.read",
+        "settings.write",
+        "audit.read",
+        "webhooks.read",
+        "webhooks.manage"
+      ],
+      "limits": [
+        "no_self_removal_if_last_owner",
+        "reason_required_for_protected_actions"
+      ]
+    },
+    "manager": {
+      "label": "Manager",
+      "permissions": [
+        "dashboard.read",
+        "dashboard.configure",
+        "orders.read",
+        "orders.update_status",
+        "orders.cancel",
+        "orders.export",
+        "catalog.read",
+        "catalog.write",
+        "catalog.publish",
+        "catalog.availability.write",
+        "content.read",
+        "content.write",
+        "content.publish",
+        "media.read",
+        "media.write",
+        "locations.read",
+        "locations.write",
+        "users.read",
+        "users.write",
+        "roles.assign",
+        "settings.read",
+        "audit.read",
+        "webhooks.read"
+      ],
+      "limits": [
+        "can_assign_only:staff|support|content_editor",
+        "cannot_assign_or_revoke_owner",
+        "cannot_write_security_settings",
+        "cannot_manage_webhooks"
+      ]
+    },
+    "staff_ops": {
+      "label": "Staff (Ops)",
+      "permissions": [
+        "dashboard.read",
+        "orders.read",
+        "orders.update_status",
+        "orders.cancel",
+        "orders.export",
+        "catalog.read",
+        "catalog.availability.write",
+        "audit.read"
+      ],
+      "limits": [
+        "orders.cancel_only_if_status_not_completed",
+        "orders.cancel_reason_min_length:10",
+        "catalog.write_allowed_fields:is_available|stock_indicator|prep_time_minutes",
+        "cannot_publish_catalog_or_content"
+      ]
+    },
+    "support": {
+      "label": "Support",
+      "permissions": [
+        "dashboard.read",
+        "orders.read",
+        "orders.export",
+        "settings.read",
+        "audit.read",
+        "webhooks.read"
+      ],
+      "limits": [
+        "read_only_except_export"
+      ]
+    },
+    "content_editor": {
+      "label": "Content Editor",
+      "permissions": [
+        "dashboard.read",
+        "catalog.read",
+        "catalog.write",
+        "content.read",
+        "content.write",
+        "content.publish",
+        "media.read",
+        "media.write",
+        "audit.read"
+      ],
+      "limits": [
+        "catalog.write_allowed_fields:name|description|media|allergens|merchandising",
+        "cannot_change_pricing_or_availability",
+        "cannot_manage_orders_users_roles_settings_webhooks"
+      ]
+    }
+  },
+  "endpointPermissionMap": [
+    {
+      "method": "GET",
+      "path": "/v1/admin/orders",
+      "permission": "orders.read"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/admin/orders/{id}/status",
+      "permission": "orders.update_status"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/admin/orders/{id}/cancel",
+      "permission": "orders.cancel",
+      "constraints": ["reason_required", "if_role_staff_ops_status_not_completed"]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/admin/products",
+      "permission": "catalog.write"
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/admin/products/{id}/availability",
+      "permission": "catalog.availability.write"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/admin/pages/{id}/publish",
+      "permission": "content.publish"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/admin/media/upload-url",
+      "permission": "media.write"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/admin/users/{id}/roles",
+      "permission": "roles.assign"
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/admin/settings",
+      "permission": "settings.write"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/admin/audit-logs",
+      "permission": "audit.read"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/admin/webhooks/{id}/test",
+      "permission": "webhooks.manage"
+    }
+  ],
+  "globalRules": [
+    {
+      "code": "RBAC_001",
+      "rule": "API authorization is source of truth; UI checks are advisory."
+    },
+    {
+      "code": "RBAC_002",
+      "rule": "All admin write actions must generate audit log with before/after diff and requestId."
+    },
+    {
+      "code": "RBAC_003",
+      "rule": "No self-promotion to owner and no removal of last active owner."
+    },
+    {
+      "code": "RBAC_004",
+      "rule": "Protected actions require reason (order cancel/reject, location deactivate override, critical role downgrade)."
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Dilshad Restaurant</title>
+  <meta name="description" content="Get in touch with Dilshad Restaurant. We're here to help." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Minimal Header -->
+  <header class="header-minimal">
+    <div class="container-fluid">
+      <a href="index.html" class="logo">DILSHAD</a>
+      <nav class="nav-minimal">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Order</a>
+        <a href="reservations.html">Book Table</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon">☀️</span>
+        </button>
+        <a href="menu.html" class="btn-primary-small">Order Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container-fluid">
+      <h1>Contact Us</h1>
+      <p>We're here to help with any questions or feedback</p>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="location-section">
+    <div class="container-fluid">
+      <div class="location-content">
+        <div class="location-info">
+          <h2>Get In Touch</h2>
+          <div class="info-item">
+            <strong>Address</strong>
+            <p>618-620 Bristol Road<br>Selly Oak, Birmingham<br>B29 6BQ</p>
+          </div>
+          <div class="info-item">
+            <strong>Phone</strong>
+            <p><a href="tel:+441214725016">+44 121 472 5016</a></p>
+          </div>
+          <div class="info-item">
+            <strong>Opening Hours</strong>
+            <p>
+              Mon-Thu: 4:00 PM – 12:00 AM<br>
+              Fri-Sat: 4:00 PM – 2:00 AM<br>
+              Sun: 4:00 PM – 12:00 AM
+            </p>
+          </div>
+          <div class="location-cta">
+            <a href="menu.html" class="btn-primary-large">Order Online</a>
+            <a href="reservations.html" class="btn-secondary-large">Book a Table</a>
+          </div>
+        </div>
+        <div class="location-map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2432.8!2d-1.9447!3d52.4389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc8a0!2s618-620%20Bristol%20Rd%2C%20Birmingham%20B29%206BQ!5e0!3m2!1sen!2suk!4v1234567890" 
+            width="100%" 
+            height="100%" 
+            style="border:0; border-radius: var(--radius-xl);" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Dilshad Restaurant Location">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-minimal">
+    <div class="container-fluid">
+      <div class="footer-content">
+        <p>&copy; 2026 Dilshad Restaurant. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="menu.html">Order</a>
+          <a href="reservations.html">Book</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      const isLight = document.body.classList.contains('light-theme');
+      themeToggle.querySelector('.theme-icon').textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('dilshad-theme', isLight ? 'light' : 'dark');
+    });
+
+    // Load theme preference (default to dark)
+    const savedTheme = localStorage.getItem('dilshad-theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+      themeToggle.querySelector('.theme-icon').textContent = '🌙';
+    } else {
+      themeToggle.querySelector('.theme-icon').textContent = '☀️';
+    }
+  </script>
+</body>
+</html>
